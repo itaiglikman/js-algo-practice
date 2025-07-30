@@ -12,8 +12,22 @@ Round to the nearest integer.
 If the input is incorrect, return "Error".
 */
 
-function convertTemp( /*args*/ ) {
-  //your code
+function convertTemp(temp) {
+    // get type by last char
+    const type = temp.slice(-1);
+    const dot = '°';
+    if (type !== 'F' && type !== 'C') return 'Error';
+    let rest = temp.slice(0, -1);
+    if (rest.slice(-1) !== dot) return 'Error';
+    rest = rest.slice(0, -1);
+    const num = Number(rest);
+    if (isNaN(num)) return 'Error';
+    if (type === "C") {
+        const converted = Math.round((9 / 5 * num) + 32);
+        return converted.toString() + dot + "F";
+    }
+    const converted = Math.round((num - 32) * (5 / 9));
+    return converted.toString() + dot + "C";
 }
 
-exports.solution = convert;
+exports.solution = convertTemp;
