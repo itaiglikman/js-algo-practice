@@ -14,8 +14,16 @@ Notes
 Remember to sort the keys.
 */
 
-function keysAndValues( /*args*/ ) {
-  //your code
+function keysAndValues( obj ) {
+  const keysArr= [];
+  const valsArr = [];
+  for (const key in obj) {
+    keysArr.push(key);
+    valsArr.push(obj[key]);
+  }
+  return [keysArr,valsArr];
 }
+
+// console.log(keysAndValues({ a: "Apple", b: "Microsoft", c: "Google" }));
 
 exports.solution = keysAndValues;

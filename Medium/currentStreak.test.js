@@ -13,7 +13,7 @@ ${"2019-09-23"} |${[{"date":"2019-06-25"},{"date":"2019-06-28"},{"date":"2019-07
 ${"2019-09-25"} |${[{"date":"2019-09-16"},{"date":"2019-09-17"},{"date":"2019-09-21"},{"date":"2019-09-22"},{"date":"2019-09-23"}]} |${0}
 ${"2019-09-16"} |${[]} |${0}
 `
-    ("returns $expected when calling with the following param/s: a, b", ({
+    ("returns $expected when calling with the following param/s: $a, $b", ({
       a,
       b,
       expected
