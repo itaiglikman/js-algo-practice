@@ -1,5 +1,6 @@
 /*
-Create a function that takes an array representation of a Minesweeper board, and returns another board where the value of each cell is the amount of its neighbouring mines.
+Create a function that takes an array representation of a Minesweeper board, 
+and returns another board where the value of each cell is the amount of its neighbouring mines.
 
 Examples
 The input may look like this:
@@ -25,8 +26,50 @@ Since in the output the numbers 0-8 are used to determine the amount of adjacent
 A wikipedia page explaining how Minesweeper works is available in the Resources tab
 */
 
-function minesweeperNumbers(/*args*/) {
-  //your code
+function minesweeperNumbers(mat) {
+
+    const dup = mat.map(row => row.slice());
+
+    for (let i = 0; i < mat.length; i++) {
+        const row = mat[i];
+        for (let j = 0; j < row.length; j++) {
+            if (mat[i][j] === 1) {
+                dup[i][j] = 9;
+            } else {
+                const around = getAround(mat,i,j);
+                let count = 0;
+                for (const neighbor of around) {
+                    if ((neighbor === 1)) count++;
+                }
+                dup[i][j] = count;
+            }
+        }
+    }
+    return (dup);
 }
+
+function getCell(mat, i, j) {
+    if (i < 0 || i >= mat.length || j < 0 || j >= mat[0].length) return -1;
+    return mat[i][j];
+}
+
+function getAround(mat,i,j) {
+    const upLeft = getCell(mat, i - 1, j - 1);
+    const up = getCell(mat, i - 1, j);
+    const upRight = getCell(mat, i - 1, j + 1);
+    const right = getCell(mat, i, j + 1);
+    const left = getCell(mat, i, j - 1);
+    const downLeft = getCell(mat, i + 1, j - 1);
+    const down = getCell(mat, i + 1, j);
+    const downRight = getCell(mat, i + 1, j + 1);
+    const around = [upLeft, upRight, up, right, left, downLeft, down, downRight]
+    return around;
+}
+
+minesweeperNumbers([
+    [0, 1, 0, 0],
+    [0, 0, 1, 0],
+    [0, 1, 0, 1],
+    [1, 1, 0, 0],])
 
 exports.solution = minesweeperNumbers;
