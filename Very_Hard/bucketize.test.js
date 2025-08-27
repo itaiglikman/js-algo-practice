@@ -26,7 +26,7 @@ ${"a b c d e"} |${1} |${["a","b","c","d","e"]}
 ${"a b c d e"} |${2} |${["a","b","c","d","e"]}
 ${"a b c d e"} |${1} |${["a","b","c","d","e"]}
 `
-    ("returns $expected when calling with the following param/s: a, b", ({
+    ("returns $expected when calling with the following param/s: $a, $b", ({
       a,
       b,
       expected
